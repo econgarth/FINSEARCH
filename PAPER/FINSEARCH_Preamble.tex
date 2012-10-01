@@ -1,0 +1,95 @@
+\usepackage{lscape,epsf,epsfig,natbib,amsfonts,amssymb,multirow}
+\usepackage{float,amsmath,bbm,ulem,simplemargins,mathrsfs,amsthm}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assu}{Assumption}
+\newtheorem{remark}{Remark}
+\newtheorem{defi}{Definition}
+\newtheorem{theo}{Theorem}
+\newtheorem{corr}{Corollary}
+\newtheorem{exa}{Example}
+\newtheorem{result}{Result}
+
+\newcommand{\propr}[1]{{\bf Proof of Proposition \ref{#1}.}}
+\newcommand{\respr}[1]{{\bf Proof of Result \ref{#1}.}}
+\newcommand{\proo}{{\bf Proof }}
+
+\bibliographystyle{econometrica}
+
+\setleftmargin{0.75in}
+\setrightmargin{0.75in}
+\settopmargin{0.75in}
+\setbottommargin{0.75in}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+%Shortcuts
+\newcommand{\dwx}{\mathpzc{d}_w(x)}
+\newcommand{\dex}{\mathpzc{d}_e(x)}
+\newcommand{\dux}{\mathpzc{d}_u(x)}
+\newcommand{\df}{\mathpzc{d}_f}
+\newcommand{\dw}{\mathpzc{d}_w}
+\newcommand{\dmxrho}{\mathpzc{d}_m(x,\rho)}
+\newcommand{\dmxirho}{\mathpzc{d}_m(x_i,\rho)}
+\newcommand{\dmxjrho}{\mathpzc{d}_m(x_j,\rho)}
+\newcommand{\dm}{\mathpzc{d}_m}
+\newcommand{\dmexrho}{\mathpzc{d}^*_m(x,\rho)}
+\newcommand{\dvrho}{\mathpzc{d}_v(\rho)}
+\newcommand{\dverho}{\mathpzc{d}^*_v(\rho)}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\dx}{\ \mathrm{d}x}
+\newcommand{\dxi}{\ \mathrm{d}x_i}
+\newcommand{\dxj}{\ \mathrm{d}x_j}
+\newcommand{\indicator}[1]{\mathbbm{1}_{\left[ {#1} \right] }}
+
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\dmxy}{\mathpzc{d}_m}
+
+\newcommand{\dmxtr}{\mathpzc{d}_m(\tilde{x},\rho)}
+\newcommand{\dmxrt}{\mathpzc{d}_m(x,\tilde{\rho})}
+
+\newcommand{\dvrt}{\mathpzc{d}_v(\tilde{\rho})}
+\newcommand{\dr}{\mathrm{d}\rho}
+\newcommand{\dtr}{\mathrm{d}\tilde{\rho}}
+\newcommand{\dsp}{\mathpzc{d}_p}
+\newcommand{\du}{\mathpzc{d}_u}
+\newcommand{\dv}{\mathpzc{d}_v}
+\newcommand{\mxtytoe}{\frac{\dh(\tilde{x},\tilde{y})}{E}}
+\newcommand{\mxtytoedtxdty}{\frac{\dh(\tilde{x},\tilde{y})}{E} \ \mathrm{d}\tilde{x}\mathrm{d}\tilde{y}}
+\newcommand{\ufytov}{\frac{\dv(\tilde{y})}{V}}
+\newcommand{\ufyov}{\frac{\dv(y)}{V}}
+\newcommand{\ufytovdty}{\frac{\dv(\tilde{y})}{V}\ \mathrm{d}\tilde{y}}
+\newcommand{\uwxtoudtx}{\frac{\du(\tilde{x})}{U}\ \mathrm{d}\tilde{x}}
+\newcommand{\uwxtou}{\frac{\du(\tilde{x})}{U}}
+\newcommand{\uwxou}{\frac{\du(x)}{U}}
+\newcommand{\Ce}{\mathbb{C}_e}
+\newcommand{\Cu}{\mathbb{C}_u}
+\newcommand{\Cp}{\mathbb{C}_p}
+\newcommand{\Cv}{\mathbb{C}_v}
+\newcommand{\Mu}{\mathbb{M}_u}
+\newcommand{\Me}{\mathbb{M}_e}
+\newcommand{\Mv}{\mathbb{M}_v}
+\newcommand{\Mp}{\mathbb{M}_p}
+\newcommand{\dtxdty}{\ \mathrm{d}\tilde{x}\mathrm{d}\tilde{y}}
+\newcommand{\dtddr}{\ \mathrm{d}\tilde{\mathpzc{d}}_\rho(x)\mathrm{d}\tilde{\rho}}
+
+\newcommand{\dtx}{\ \mathrm{d}\tilde{x}}
+\newcommand{\dty}{\ \mathrm{d}\tilde{y}}
+\newcommand{\drho}{\ \mathrm{d}\rho}
+\newcommand{\dxdrho}{\ \mathrm{d}x\mathrm{d}\rho}
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\ty}{\tilde{y}}
+\newcommand{\by}{\bar{y}}
+\newcommand{\dxdy}{\ \mathrm{d}x\mathrm{d}y}
+
+\newcommand{\maxAux}{\max_{A(x)}\ \ }
+\newcommand{\maxAvy}{\max_{A(y)}\ \ }
+\newcommand{\Stxy}{S(\tilde{x},y)}
+\newcommand{\Sxty}{S(x,\tilde{y})}
+\newcommand{\iBvx}{\int\limits_{\Bvx}}
+\newcommand{\iBpx}{\int\limits_{\Bpx}}
+\newcommand{\iBuy}{\int\limits_{\Buy}}
+\newcommand{\iBey}{\int\limits_{\Bey}}
+\newcommand{\iBexy}{\int\limits_{\Bexy}}
+\newcommand{\iBpxy}{\int\limits_{\Bpxy}}
+
