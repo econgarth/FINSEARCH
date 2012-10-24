@@ -1,0 +1,1 @@
+20121024_T : It seems that search has dissapeared. It is essential that we find a place for it, either in the baseline, or, at least, when some parameter is activated, it comes back.
