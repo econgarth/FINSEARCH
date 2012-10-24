@@ -21,32 +21,82 @@ Search in OTC markets for exotic assets.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{ToDo} If we can figure out how to summarize the OTC problem into one (or two) variables, we can already figure out the market for loanable funds problem. I think we should figure out what these one or two variables are, and Tzuo can get cranking on this part of the problem while we thrash out the OTC problem together with Garth making decisions on the technical difficulties involved in the analytical portion.
-
-We also have to agree that this is all we want to work on for now, and any other considerations that fall outside the scope here is left to later work. Basically, we want to define ``basic model'', and solve it. 
-
 \section{Introduction}\label{section:introduction}
-Consider a bank with two partial equilibrium problems:
-\begin{enumerate}
-\item \textbf{Resource allocation problem: } Banks have a fixed rate of return in some market for loanable funds. If the OTC market is shut down, the optimal allocation for banks is to have all their funds in the market for loanable funds and to consume some part of the returns in each period. With participation in the OTC market, the banks problem also involves maintaining liquidity to cover risky positions in the OTC market in the event of shocks (idiosyncratic, or depending on exposure to an aggregate shock.) In this case, given the summary position in the OTC market, the bank solves for the optimal amount of resources to place in the market for loanable funds. This problem occurs at the end of each period. 
-\item \textbf{OTC market: } The bank takes the position and price of risky assets as given and tries to improve upon its position. Of course, this depends very heavily on the description of the environment. As every bank is trying to do this, a partial equilibrium here would be a price schedule for every possible contact between any two banks. This problem occurs at the beginning of each period, and is resolved before the next periods resource allocation problem begins.
-\end{enumerate}
-Putting these two problems together is the baseline case is what we are after.
+PLACEHOLDER
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Model}\label{section:model}
-\subsection{Ingredients}
-We start with a bare-bones model of the OTC market with the following features:
+\section{Baseline model}\label{section:model}
+\subsection{Banks}
+There are a finite number $ N $ of infinitely lived banks who discount the future at rate $ \beta $. At the beginning of each period, bank $ i $ is described by two scalars, working capital and risky assets, which we denote by $ (D_{i,t},B_{i,t}) $. Banks partition working capital into a liquid form, ``money'', $ M_{i,t} $ which bear no returns, or, an illiquid form, ``loans'', $ L_{i,t} $ which bear constant interest $ 1 + r $. There are sub-periods in each $ t $. We assume that all information is public. As variables change from period to period, we use $ t' $ to denote the first instance where a variable changes within period, $ t'' $ to denote the same variable after the second change, and so on.
 \begin{enumerate}
-\item \textbf{Bilateral price setting: } In an OTC market, traders obviously see each other face to face and will be able to extract a certain amount of information from one another about the counter-party's valuation of an asset. Hence, there will be price dispersion for an identical asset depending on the parties partaking in the exchange. 
-\item \textbf{Contact technology: } Traders from different banks contact one another in order to trade bilaterally. The type of this contact technology is important as it will be related to the price setting and to whether we want to look at a finite number of traders, or a continuum of them. Candidates are random search, competitive search, directed search and stock flow. 
-\item \textbf{Finite/continuum traders: } Regardless of the contact technology used, we need to make a decision on the number and nature of traders who operate in the environment. 
-\item \textbf{Finite number of banks: } We are aiming for a few banks, possibly of different sizes operating in the OTC market POST entry. It is clear from empirical evidence that some sort of fixed entry cost is playing a role in dictating the size of banks who are active in this market and we are not interested in that. We want to abstract from entry and just concentrate on a few banks who are in it, and be very specific with the micro/institutional foundations of such banks.
-\item \textbf{Float: } Due to frictions in how quickly money flows in and out of the market for loanable funds, banks have to make a decision about how much liquidity to maintain in order to cover positions in the OTC market. For now, we assume it is impossible to recover money from the market for loanable funds. 
+\item \textbf{Wealth shock.} All banks experience IID shock $ w_{i,t} $ to $ D_{i,t} $. 
+\[ D_{i,t'} = D_{i,t} + w_{i,t} \]
+\item \textbf{Frictional markets.} One randomly selected bank is allowed to post one TIOLI fixed-for-floating offer. Denote the change in a bank's working capital position from trade by $ \Delta^D_{i,t} $ and the change in the risky asset position by $ \Delta^B_{i,t} $.
+\[ D_{i,t''} = D_{i,t'} +  \Delta^D_{i,t} \]
+\[ B_{i,t'}  = B_{i,t} +  \Delta^B_{i,t} \]
+\item \textbf{Reallocation.} Banks decide on $ M_{i,t} $ and $ L_{i,t} $ such that 
+\[ M_{i,t} + L_{i,t} = D_{i,t''}. \]
+\item \textbf{Risky returns.} With probability $ \lambda $ which is independent across firms, risky assets post returns $ r^B_{i,t} $ which may be negative. If risky returns are realized, a banks change in its money holdings is 
+\[ \Delta^M_{i,t} = M_{i,t} + r^B_{i,t}B_{i,t'}. \] 
+\[ M_{i,t'} = \Delta^M_{i,t} + M_{i,t} \] 
+If $ M_{i,t'} < 0 $ a kitten dies.
+\item \textbf{Risk-free return.} \[ L_{i,t'} = (1+r)L_{i,t} \]
+\item \textbf{Competitive market.} All banks participate in a competitive fixed-for-floating market.
+\[ q_tB_{i,t+1} + D_{i,t+1} = q_{t}B_{i,t'} + L_{i,t'} + M_{i,t'} \]
 \end{enumerate}
+In graphical form, the events in 1 periods follow
+\begin{figure}[H]
+\begin{center}
+\begin{tikzpicture}[
+    grow=down,
+    level 1/.style={sibling distance=3cm, level distance=2cm},
+    level 2/.style={sibling distance=3cm, level distance=3cm},
+    level 3/.style={sibling distance=3cm, level distance=2cm},
+    edge from parent/.style={very thick,draw=blue!40!black!60,shorten >=5pt, shorten <=5pt},
+    edge from parent path={(\tikzparentnode.south) -- (\tikzchildnode.north)},
+    kant/.style={text centered},
+    every node/.style={text ragged, inner sep=2mm},
+    punkt/.style={rectangle,rounded corners,shade,top color=white,bottom color=blue!50!black!20,draw=blue!40!black!60,very thick}
+    ]
+\node[punkt] {$ D_{i,t},B_{i,t}$}
+    %Upper part, lv1
+    child {
+        node[punkt] {$ D_{i,t'} = D_{i,t} + w_{i,t} $}
+        %child 1
+        child {
+            node [punkt,rectangle split, rectangle split,
+            rectangle split parts=3] {
+                \textbf{Scenario  2}
+                \nodepart{second}
+                $\text{Country B}$
+                \nodepart{third}
+                $\text{Country A}$
+            }
+            edge from parent
+                node[left, kant,  pos=.5] {BLA}
+        }
+        %child 2
+        child {
+            node [punkt, rectangle split, rectangle split parts=3]{
+                \textbf{Scenario 3}
+                \nodepart{second}
+                $\text{Country B}$
+                \nodepart{third}
+                $\text{Country A}$
+            }
+            edge from parent
+                node[kant, right] {BLA2}
+                }
+            edge from parent{
+                node[kant,right,pos = 0.5] {All firms hit by shock $ w_{i,t} $}
+                }
+ };
+\end{tikzpicture}
+\end{center}
+\end{figure}
 
 \section{Empirics}
 PLACEHOLDER
